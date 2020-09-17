@@ -9,6 +9,7 @@ import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import com.mohamed.halim.essa.simplegallery.R
 import com.mohamed.halim.essa.simplegallery.databinding.ImagesFragmentBinding
@@ -36,7 +37,6 @@ class ImagesFragment : Fragment() {
     }
 
     private fun setupViewModelObservers() {
-        viewModel.updateImagesCache()
         setupImagesObserver()
     }
 
@@ -47,7 +47,13 @@ class ImagesFragment : Fragment() {
     }
 
     private fun setupImageRecycleView() {
-        adapter = ImagesAdapter()
+        adapter = ImagesAdapter(ImageClickListener {
+            findNavController().navigate(
+                ImagesFragmentDirections.actionImagesFragmentToSingleImageFragment(
+                    it
+                )
+            )
+        })
         val manager = GridLayoutManager(requireContext(), 3)
         val imageRecycleView = binding.imagesRecycleView
         imageRecycleView.layoutManager = manager

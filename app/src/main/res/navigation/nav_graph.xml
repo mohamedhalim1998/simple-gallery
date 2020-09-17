@@ -3,11 +3,32 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/imagesFragment">
+    app:startDestination="@id/splashFragment">
 
     <fragment
         android:id="@+id/imagesFragment"
         android:name="com.mohamed.halim.essa.simplegallery.allimages.ImagesFragment"
         android:label="images_fragment"
-        tools:layout="@layout/images_fragment" />
+        tools:layout="@layout/images_fragment" >
+        <action
+            android:id="@+id/action_imagesFragment_to_singleImageFragment"
+            app:destination="@id/singleImageFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/singleImageFragment"
+        android:name="com.mohamed.halim.essa.simplegallery.singleimage.SingleImageFragment"
+        android:label="SingleImageFragment" >
+        <argument
+            android:name="imagePosition"
+            app:argType="integer" />
+    </fragment>
+    <fragment
+        android:id="@+id/splashFragment"
+        android:name="com.mohamed.halim.essa.simplegallery.SplashFragment"
+        android:label="fragment_splash"
+        tools:layout="@layout/fragment_splash" >
+        <action
+            android:id="@+id/action_splashFragment_to_imagesFragment"
+            app:destination="@id/imagesFragment" />
+    </fragment>
 </navigation>

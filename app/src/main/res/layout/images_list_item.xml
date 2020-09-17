@@ -7,6 +7,14 @@
         <variable
             name="image"
             type="com.mohamed.halim.essa.simplegallery.data.Image" />
+
+        <variable
+            name="itemPosition"
+            type="Integer" />
+
+        <variable
+            name="clickListener"
+            type="com.mohamed.halim.essa.simplegallery.allimages.ImageClickListener" />
     </data>
 
     <FrameLayout
@@ -16,6 +24,7 @@
         <ImageView
             android:layout_width="match_parent"
             android:layout_height="150dp"
+            android:onClick="@{() -> clickListener.onClick(itemPosition)}"
             apps:imageUri="@{image.id}" />
     </FrameLayout>
 </layout>
