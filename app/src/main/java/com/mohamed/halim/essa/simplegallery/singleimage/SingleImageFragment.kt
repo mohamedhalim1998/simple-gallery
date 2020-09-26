@@ -4,9 +4,12 @@ import android.os.Bundle
 import android.view.*
 import androidx.fragment.app.Fragment
 import androidx.databinding.DataBindingUtil
+import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import com.mohamed.halim.essa.simplegallery.R
+import com.mohamed.halim.essa.simplegallery.allimages.ImagesFragment
+import com.mohamed.halim.essa.simplegallery.allimages.ImagesViewModel
 import com.mohamed.halim.essa.simplegallery.databinding.SingleImageFragmentBinding
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -14,7 +17,7 @@ import dagger.hilt.android.AndroidEntryPoint
 class SingleImageFragment : Fragment(), FullScreenControl {
 
 
-    val viewModel: SingleImageViewModel by viewModels()
+    val viewModel: ImagesViewModel by activityViewModels()
     lateinit var binding: SingleImageFragmentBinding
     lateinit var adapter: ImagePagerAdapter
     var fullScreen = true

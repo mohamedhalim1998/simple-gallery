@@ -1,4 +1,4 @@
-package com.mohamed.halim.essa.simplegallery
+package com.mohamed.halim.essa.simplegallery.splash
 
 import android.Manifest
 import android.content.pm.PackageManager
@@ -8,10 +8,9 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat.checkSelfPermission
 import androidx.navigation.fragment.findNavController
-
+import com.mohamed.halim.essa.simplegallery.R
 
 class SplashFragment : Fragment() {
     private val READ_WRITE_PERMISSION = 1025
@@ -44,7 +43,7 @@ class SplashFragment : Fragment() {
                     READ_WRITE_PERMISSION
                 )
             } else {
-                findNavController().navigate(SplashFragmentDirections.actionSplashFragmentToImagesFragment())
+                findNavController().navigate(SplashFragmentDirections.actionSplashFragmentToAlbumsFragment())
             }
         }
     }
@@ -58,7 +57,7 @@ class SplashFragment : Fragment() {
             grantResults.isNotEmpty()
         ) {
             if (grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-                findNavController().navigate(SplashFragmentDirections.actionSplashFragmentToImagesFragment())
+                findNavController().navigate(SplashFragmentDirections.actionSplashFragmentToAlbumsFragment())
             } else {
                 checkReadWritePermission()
             }

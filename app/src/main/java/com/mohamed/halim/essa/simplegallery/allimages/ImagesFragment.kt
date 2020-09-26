@@ -7,6 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
+import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
@@ -22,8 +23,12 @@ class ImagesFragment : Fragment() {
     lateinit var binding: ImagesFragmentBinding
     lateinit var adapter: ImagesAdapter
 
-    val viewModel: ImagesViewModel by viewModels()
-
+    val viewModel: ImagesViewModel by activityViewModels()
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        viewModel.updateImagesCache()
+        viewModel.setAlbumId(requireArguments().getLong("albumId"))
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,

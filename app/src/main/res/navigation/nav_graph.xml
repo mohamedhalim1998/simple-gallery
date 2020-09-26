@@ -13,6 +13,9 @@
         <action
             android:id="@+id/action_imagesFragment_to_singleImageFragment"
             app:destination="@id/singleImageFragment" />
+        <argument
+            android:name="albumId"
+            app:argType="long" />
     </fragment>
     <fragment
         android:id="@+id/singleImageFragment"
@@ -24,11 +27,23 @@
     </fragment>
     <fragment
         android:id="@+id/splashFragment"
-        android:name="com.mohamed.halim.essa.simplegallery.SplashFragment"
+        android:name="com.mohamed.halim.essa.simplegallery.splash.SplashFragment"
         android:label="fragment_splash"
         tools:layout="@layout/fragment_splash" >
         <action
             android:id="@+id/action_splashFragment_to_imagesFragment"
+            app:destination="@id/imagesFragment" />
+        <action
+            android:id="@+id/action_splashFragment_to_albumsFragment"
+            app:destination="@id/albumsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/albumsFragment"
+        android:name="com.mohamed.halim.essa.simplegallery.albums.AlbumsFragment"
+        android:label="albums_fragment"
+        tools:layout="@layout/albums_fragment" >
+        <action
+            android:id="@+id/action_albumsFragment_to_imagesFragment"
             app:destination="@id/imagesFragment" />
     </fragment>
 </navigation>

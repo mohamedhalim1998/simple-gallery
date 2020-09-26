@@ -6,21 +6,15 @@ import androidx.lifecycle.*
 import com.mohamed.halim.essa.simplegallery.data.Image
 import com.mohamed.halim.essa.simplegallery.data.Repo
 import kotlinx.coroutines.launch
+import timber.log.Timber
 
 class ImagesViewModel @ViewModelInject constructor(
     val repo: Repo,
     @Assisted private val savedStateHandle: SavedStateHandle
 ) : ViewModel() {
+    var images: LiveData<List<Image>> =  repo.getAllImages().asLiveData()
 
-    val images: LiveData<List<Image>> = repo.getAllImages().asLiveData()
-
-    init {
-        updateImagesCache()
-    }
-
-    fun updateImagesCache() {
-        viewModelScope.launch {
-            repo.updateImages()
-        }
+    fun setAlbumId(albumId: Long) {
+        images = repo.getImagesFromAlbum(albumId).asLiveData()
     }
 }

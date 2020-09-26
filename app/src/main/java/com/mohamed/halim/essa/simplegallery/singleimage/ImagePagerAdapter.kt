@@ -35,7 +35,7 @@ class ImagePagerAdapter(val fullScreenControl: FullScreenControl) :
             binding.loading.visibility = View.VISIBLE
             binding.imageFull.setImage(ImageSource.uri(uri))
             binding.imageFull.setMinimumDpi(100)
-            binding.imageFull.setDoubleTapZoomDpi(100)
+            binding.imageFull.setDoubleTapZoomDpi(160)
             binding.loading.visibility = View.GONE
             binding.imageFull.setOnClickListener {
                 if (fullScreen) {
