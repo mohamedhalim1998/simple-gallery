@@ -75,6 +75,9 @@ class SplashFragment : Fragment() {
             grantResults.isNotEmpty()
         ) {
             if (grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                appScope.launch {
+                    repo.updateImages()
+                }
                 findNavController().navigate(SplashFragmentDirections.actionSplashFragmentToAlbumsFragment())
             } else {
                 checkReadWritePermission()
