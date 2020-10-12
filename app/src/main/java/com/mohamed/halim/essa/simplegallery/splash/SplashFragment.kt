@@ -11,10 +11,25 @@ import android.view.ViewGroup
 import androidx.core.content.ContextCompat.checkSelfPermission
 import androidx.navigation.fragment.findNavController
 import com.mohamed.halim.essa.simplegallery.R
+import com.mohamed.halim.essa.simplegallery.data.Repo
+import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import javax.inject.Inject
 
+@AndroidEntryPoint
 class SplashFragment : Fragment() {
     private val READ_WRITE_PERMISSION = 1025
 
+    @Inject
+    lateinit var repo: Repo
+
+    val appScope = CoroutineScope(Dispatchers.Default)
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        requireActivity().findViewById<View>(R.id.bottom_nav).visibility = View.GONE
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -43,6 +58,9 @@ class SplashFragment : Fragment() {
                     READ_WRITE_PERMISSION
                 )
             } else {
+                appScope.launch {
+                    repo.updateImages()
+                }
                 findNavController().navigate(SplashFragmentDirections.actionSplashFragmentToAlbumsFragment())
             }
         }

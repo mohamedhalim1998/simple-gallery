@@ -22,12 +22,11 @@ class ImagesFragment : Fragment() {
 
     lateinit var binding: ImagesFragmentBinding
     lateinit var adapter: ImagesAdapter
-
     val viewModel: ImagesViewModel by activityViewModels()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        viewModel.updateImagesCache()
-        viewModel.setAlbumId(requireArguments().getLong("albumId"))
+        viewModel.setAlbumId(requireArguments().getLong("albumId", -1))
+        requireActivity().findViewById<View>(R.id.bottom_nav).visibility = View.VISIBLE
     }
 
     override fun onCreateView(

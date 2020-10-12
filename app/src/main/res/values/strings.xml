@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">Simple Gallery</string>
+    <string name="all_images">All</string>
+    <string name="albums">Albums</string>
 </resources>

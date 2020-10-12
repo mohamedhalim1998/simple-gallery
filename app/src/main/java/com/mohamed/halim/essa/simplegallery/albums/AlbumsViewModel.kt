@@ -12,10 +12,4 @@ class AlbumsViewModel @ViewModelInject constructor(
     @Assisted private val savedStateHandle: SavedStateHandle
 ) : ViewModel() {
     val albums: LiveData<List<Album>> = repo.getAllAlbums().asLiveData()
-
-    init {
-        viewModelScope.launch {
-            repo.updateImages()
-        }
-    }
 }

@@ -27,6 +27,7 @@ class SingleImageFragment : Fragment(), FullScreenControl {
         requireActivity().window.decorView.setOnSystemUiVisibilityChangeListener { visibility ->
             fullScreen = (visibility and View.SYSTEM_UI_FLAG_FULLSCREEN == 0).not()
         }
+        requireActivity().findViewById<View>(R.id.bottom_nav).visibility = View.GONE
 
 
     }

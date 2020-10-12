@@ -20,6 +20,10 @@ class AlbumsFragment : Fragment() {
     lateinit var binding: AlbumsFragmentBinding
     lateinit var adapter: AlbumsAdapter
     val viewModel: AlbumsViewModel by viewModels()
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        requireActivity().findViewById<View>(R.id.bottom_nav).visibility = View.VISIBLE
+    }
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?

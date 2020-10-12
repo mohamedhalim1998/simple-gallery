@@ -15,7 +15,8 @@
             app:destination="@id/singleImageFragment" />
         <argument
             android:name="albumId"
-            app:argType="long" />
+            app:argType="long"
+            android:defaultValue="-1L" />
     </fragment>
     <fragment
         android:id="@+id/singleImageFragment"
